@@ -1,3 +1,5 @@
+// a parody of the game rock paper scissors
+
 document.getElementById('b1').addEventListener('click',setpaper);
 document.getElementById('b2').addEventListener('click',setstone);
 document.getElementById('b3').addEventListener('click',setsshootgun);
