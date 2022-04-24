@@ -37,7 +37,6 @@ function remove(){
     for (i = 0; i < Object.keys(dic).length ; i++){
         tnp = tnp + dic["txt " + i] + "<br>"
     }
-    alert(tnp)
     p.innerHTML = tnp
 }
 
