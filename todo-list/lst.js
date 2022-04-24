@@ -39,4 +39,3 @@ function remove(){
     }
     p.innerHTML = tnp
 }
-
