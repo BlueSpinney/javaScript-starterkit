@@ -34,7 +34,7 @@ function remove(){
     
     dic["txt " + count] = ""
     count = count - 1
-    for (i = 1; i < Object.keys(dic).length ; i++){
+    for (i = 0; i < Object.keys(dic).length ; i++){
         tnp = tnp + dic["txt " + i] + "<br>"
     }
     alert(tnp)
