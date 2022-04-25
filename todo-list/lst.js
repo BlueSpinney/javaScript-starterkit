@@ -5,7 +5,7 @@ let count = 0
 let c2 = 0
 let tnp = ""
 
-
+// storage fo all the tasks
 let dic = {
 
 }
