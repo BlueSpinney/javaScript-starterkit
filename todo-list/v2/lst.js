@@ -1,3 +1,5 @@
+// to do list in js
+
 let t = document.getElementById("example")
 let b = document.getElementById("b1").addEventListener('click',app)
 let eve = document.addEventListener('keydown',fun = (event) =>{
