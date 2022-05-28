@@ -1,4 +1,5 @@
 // to do list in js
+// non functional prototype
 
 let t = document.getElementById("example")
 let b = document.getElementById("b1").addEventListener('click',app)
