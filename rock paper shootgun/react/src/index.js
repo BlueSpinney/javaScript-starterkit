@@ -5,19 +5,15 @@ import './index.css';
 let nlst =["rock","paper","shootgun"];
 
 class Button extends React.Component {
-  
-    constructor(props) {
-      super(props);
-      this.state = {
-        clicked : false,
-        name: nlst[this.props.i],
-      };
-    }
+
 
     render() {
       return (
-        <button className="square" onClick={() => { this.setState({clicked: true}); }}>
-          {this.state.name}
+        <button 
+          className="square" 
+          
+          onClick={() => this.props.onClick()}>
+          {this.props.value}
         </button>
       );
     }
@@ -31,9 +27,19 @@ class Button extends React.Component {
       };
     }
 
+    handleClick(i) {
+      const squares = this.state.states.slice();
+      squares[i] = 'X';
+      this.setState({states: squares});
+    }
 
     renderSquare(i) {
-      return <Button i={this.start.buttons[i]} />;
+      return (
+        <Button
+          value={this.state.states[i]}
+          onClick={() => this.handleClick(i)}
+        />
+      );
     }
   
     render() {
