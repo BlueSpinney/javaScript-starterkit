@@ -9,6 +9,7 @@ class Button extends React.Component {
 
     render() {
       return (
+
         <button 
           className="square" 
           
@@ -28,9 +29,13 @@ class Button extends React.Component {
     }
 
     handleClick(i) {
-      const squares = this.state.states.slice();
+      
+      let squares = []
+      squares.fill(null)
+      squares = this.state.states.slice();
       squares[i] = 'X';
       this.setState({states: squares});
+      alert(this.state.states)
     }
 
     renderSquare(i) {
