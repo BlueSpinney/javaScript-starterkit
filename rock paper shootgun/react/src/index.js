@@ -27,15 +27,24 @@ class Button extends React.Component {
         states: Array(3).fill(null),
       };
     }
+    /*
+    checkState(x) {
+      alert(x)
+    }
+    */
 
     handleClick(i) {
-      
-      let squares = []
-      squares.fill(null)
-      squares = this.state.states.slice();
+      alert(this.state.states[i])
+      this.setState({states: null});
+      let squares = [null,null,null]
       squares[i] = 'X';
       this.setState({states: squares});
-      alert(this.state.states)
+      alert(this.state.states[i])
+      if (this.state.states === ",X,"){
+        alert("first")
+      }
+//      checkState(this.state.states[i])
+
     }
 
     renderSquare(i) {
