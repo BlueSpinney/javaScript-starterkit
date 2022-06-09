@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-let nlst =["rock","paper","shootgun"];
+let choice = 0;
+let en = 0
+let name = ["shootgun","rock","paper"]
 
 class Button extends React.Component {
 
@@ -15,6 +17,7 @@ class Button extends React.Component {
           
           onClick={() => this.props.onClick()}>
           {this.props.value}
+          {this.props.aName}
         </button>
       );
     }
@@ -27,33 +30,46 @@ class Button extends React.Component {
         states: Array(3).fill(null),
       };
     }
-    /*
-    checkState(x) {
-      alert(x)
-    }
-    */
 
     handleClick(i) {
-      alert(this.state.states[i])
       this.setState({states: null});
-      let squares = [null,null,null]
-      squares[i] = 'X';
+      let squares = ["","",""]
+      squares[i] =  "X ";
       this.setState({states: squares});
-      alert(this.state.states[i])
-      if (this.state.states === ",X,"){
-        alert("first")
-      }
-//      checkState(this.state.states[i])
+      choice = i
 
     }
 
-    renderSquare(i) {
+    renderSquare(i,aName) {
       return (
         <Button
           value={this.state.states[i]}
+          aName = {aName}
           onClick={() => this.handleClick(i)}
         />
       );
+    }
+    exefight(ch){
+      en = Math.floor(Math.random() *  2 + 1);
+      alert(en)
+      if (ch === en - 1){
+        alert("you lose")
+      }
+      else if (ch === en){
+        alert("draw")
+      }
+      else{
+        alert("you win")
+      }
+
+    }
+    renderFight(){
+      return (
+        <button onClick={() => this.exefight(choice)}>
+
+        start fight
+        </button>
+      )
     }
   
     render() {
@@ -63,10 +79,11 @@ class Button extends React.Component {
         <div>
           <div className="status">{status}</div>
           <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
+            {this.renderSquare(0,name[0])}
+            {this.renderSquare(1,name[1])}
+            {this.renderSquare(2,name[2])}
           </div>
+          {this.renderFight()}
         </div>
       );
     }
