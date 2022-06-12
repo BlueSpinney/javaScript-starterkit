@@ -1,24 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import shootgun from './shootgun.jpg';
+import stone from './stone.jpg'
+import paper from './paper.png';
 
 let choice = 0;
 let en = 0
 let name = ["shootgun","rock","paper"]
+let imglst = [shootgun,stone,paper]
+let pck = 0
+
+class Image extends React.Component {
+
+  render() {
+    return(
+      <img src={imglst[2]} alt="shootgun" width="300" height="300">
+
+      </img>
+    );
+  }
+}
 
 class Button extends React.Component {
 
 
     render() {
       return (
-
-        <button 
-          className="square" 
-          
-          onClick={() => this.props.onClick()}>
-          {this.props.value}
-          {this.props.aName}
-        </button>
+        <>
+          <button 
+            className="square" 
+            
+            onClick={() => this.props.onClick()}>
+            {this.props.value}
+            {this.props.aName}
+          </button>
+        </>
       );
     }
   }
@@ -33,23 +50,37 @@ class Button extends React.Component {
 
     handleClick(i) {
       this.setState({states: null});
+      alert(this.props.pcck)
+      this.setState({pcck: pck})
+      alert(this.props.pcck)
       let squares = ["","",""]
       squares[i] =  "X ";
       this.setState({states: squares});
       choice = i
 
+
+
+    }
+    renderimg() {
+      return (
+        <Image>
+
+        </Image>
+      );
     }
 
-    renderSquare(i,aName) {
+    renderSquare(i,aName,p) {
       return (
         <Button
           value={this.state.states[i]}
           aName = {aName}
           onClick={() => this.handleClick(i)}
+          pcck = {p}
         />
       );
     }
     exefight(ch){
+      pck = en
       en = Math.floor(Math.random() *  2 + 1);
       alert(en)
       if (ch === en - 1){
@@ -76,14 +107,17 @@ class Button extends React.Component {
       const status = 'rock paper shootgun';
   
       return (
+
         <div>
           <div className="status">{status}</div>
           <div className="board-row">
-            {this.renderSquare(0,name[0])}
-            {this.renderSquare(1,name[1])}
-            {this.renderSquare(2,name[2])}
+            {this.renderSquare(0,name[0],pck)}
+            {this.renderSquare(1,name[1],pck)}
+            {this.renderSquare(2,name[2],pck)}
+            {this.renderimg()}
           </div>
           {this.renderFight()}
+
         </div>
       );
     }
@@ -100,6 +134,7 @@ class Button extends React.Component {
     }
   }
   
+  // ========================================
   
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(<Game />);
